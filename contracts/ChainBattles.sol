@@ -100,6 +100,16 @@ contract ChainBattles is ERC721 {
             );
     }
 
+    function getInfo(uint256 tokenId)
+        public
+        view
+        returns (Specification memory)
+    {
+        _requireMinted(tokenId);
+
+        return tokenIdToSpecifications[tokenId];
+    }
+
     function getName(uint256 tokenId) public view returns (string memory) {
         string memory name = tokenIdToSpecifications[tokenId].name;
         return name;
